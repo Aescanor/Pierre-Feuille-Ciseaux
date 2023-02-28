@@ -1,9 +1,7 @@
-// variables générales : 
-
-
-
 
 // I - fonction startGame : 
+
+let timer = document.querySelector(".timer")
 
 const btnStartingGame = document.querySelector('button[type = "submit"]');
 
@@ -14,43 +12,40 @@ btnStartingGame.addEventListener("click", function startGame(){
     startGame = setInterval(function (){
         if(startGameTimer > 0){
             startGameTimer--
-            infoParty.innerHTML = `Début de la partie dans ${startGameTimer} secondes`
+            timer.innerHTML = `Début de la partie dans ${startGameTimer} secondes`
         }
         else{
             clearInterval(startGame)
-            infoParty.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH :)"`
+            timer.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH :)"`
         }
 },1000)
 })
 
-
 // II - logique du jeux :
 
-// tableau de valeur :
-const cards = {
-    0 : "rock-card",
-    1 : "leaf-card",
-    2 : "scissors-card",
-}
+// computer choice :
 
-// test tab : :
-console.log(cards[0])
+// tableau des cartes SHI FU MI :
+const cardsTab = [
+    "rock-card",
+    "leaf-card",
+    "scissors-card",
+]
 
-
-// choix de l'ordinateur :
-
+// function random computerChoice :
 function computerChoice(){
-    return Math.floor(Math.random() * 4 )
+    let randomComputerChoice = Math.floor(Math.random() * (cardsTab.length) | 0)
+
+    let computerChoiceValue = cardsTab[randomComputerChoice]
+    console.log(`Le choix de l'ordinateur est ${computerChoiceValue}`)
 }
 
-console.log(computerChoice())
+computerChoice()
 
-
-console.log(computerChoice.value)
 
 // création de 2 variables pour stocker le choix joueur et pc :
+// let computerChoice = computerChoice();
 // let playerChoice = playerCard.selected;
-// let computerChoice = computerCard.selected;
 
 // player buttons :
 let playerRockCard = document.querySelector("img#rock-card_player");
@@ -63,12 +58,31 @@ let computerLeafCard = document.querySelector("img#leaf-card_player");
 let computerCissorsCard = document.querySelector("img#scissors-card_player");
 
 
-// cardsSelected : 
+    // playerChoice : 
+
+    // selectedCards :
+
+    playerRockCard.addEventListener("click", function selectedCard(){
+
+        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[0]}`)
+    })
+
+    playerLeafCard.addEventListener("click", function selectedCard(){
+
+        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[1]}`)
+    })
+
+    playerCissorsCard.addEventListener("click", function selectedCard(){
+
+        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[2]}`)
+    })
+
 
 // infos party: 
-const topScore = document.querySelector(".result")
 const infoParty = document.querySelector("p.info-Party");
+const topScore = document.querySelector(".result")
 
+// Conditions : 
 // playerRockCard : 
 if (playerRockCard && computerRockCard) {
     
