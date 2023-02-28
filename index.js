@@ -1,13 +1,22 @@
 
 const btnStartingGame = document.querySelector('button[type = "submit"]');
 
+// fonction startGame : 
 
 btnStartingGame.addEventListener("click", function startGame(){
 
-// décompte 1 2 3 au click :
+let startGameTimer = 10;
 
-
-
+startGame = setInterval(function (){
+    if(startGameTimer > 0){
+        startGameTimer--
+        infoParty.innerHTML = `Début de la partie dans ${startGameTimer}`
+    }
+    else{
+        clearInterval(startGame)
+        infoParty.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH :)"`
+    }
+},1000)
 })
 
 
