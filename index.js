@@ -5,20 +5,20 @@ let timer = document.querySelector(".timer")
 
 const btnStartingGame = document.querySelector('button[type = "submit"]');
 
-btnStartingGame.addEventListener("click", function startGame(){
-    
+btnStartingGame.addEventListener("click", function startGame() {
+
     let startGameTimer = 10;
-    
-    startGame = setInterval(function (){
-        if(startGameTimer > 0){
+
+    startGame = setInterval(function () {
+        if (startGameTimer > 0) {
             startGameTimer--
             timer.innerHTML = `Début de la partie dans ${startGameTimer} secondes`
         }
-        else{
+        else {
             clearInterval(startGame)
             timer.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH :)"`
         }
-},1000)
+    }, 1000)
 })
 
 // II - logique du jeux :
@@ -33,7 +33,7 @@ const cardsTab = [
 ]
 
 // function random computerChoice :
-function computerChoice(){
+function computerChoice() {
     let randomComputerChoice = Math.floor(Math.random() * (cardsTab.length) | 0)
 
     let computerChoiceValue = cardsTab[randomComputerChoice]
@@ -44,7 +44,7 @@ computerChoice()
 
 
 // création de 2 variables pour stocker le choix joueur et pc :
-// let computerChoice = computerChoice();
+// let computerPlayedCard = `${computerChoiceValue}`;
 // let playerChoice = playerCard.selected;
 
 // player buttons :
@@ -58,77 +58,50 @@ let computerLeafCard = document.querySelector("img#leaf-card_player");
 let computerCissorsCard = document.querySelector("img#scissors-card_player");
 
 
-    // playerChoice : 
+// playerChoice : 
 
-    // selectedCards :
+// selectedCards :
 
-    playerRockCard.addEventListener("click", function selectedCard(){
+playerRockCard.addEventListener("click", function selectedCard() {
 
-        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[0]}`)
-    })
+    playerRockCard = cardsTab[0];
 
-    playerLeafCard.addEventListener("click", function selectedCard(){
+    console.log(`Valeur de la carte du joeur : ${playerRockCard}`);
 
-        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[1]}`)
-    })
+    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[0]}`);
 
-    playerCissorsCard.addEventListener("click", function selectedCard(){
+    console.log(`Le joueur a joué la ${cardsTab[0]}`);
 
-        infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[2]}`)
-    })
+})
+
+playerLeafCard.addEventListener("click", function selectedCard() {
+
+    playerLeafCard = cardsTab[1];
+
+    console.log(`Valeur de la carte du joeur : ${playerLeafCard}`);
+
+    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[1]}`);
+
+    console.log(`Le joueur a joué la ${cardsTab[1]}`);
+})
+
+playerCissorsCard.addEventListener("click", function selectedCard() {
+
+    playerCissorsCard = cardsTab[2]
+
+    console.log(`Valeur de la carte du joeur : ${playerCissorsCard}`);
+
+    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[2]}`)
+
+    console.log(`Le joueur a joué la ${cardsTab[2]}`);
+})
 
 
 // infos party: 
 const infoParty = document.querySelector("p.info-Party");
 const topScore = document.querySelector(".result")
 
-// Conditions : 
-// playerRockCard : 
-if (playerRockCard && computerRockCard) {
-    
-    infoParty.textContent = `Égalité`
-    topScore.innerHTML = `+0`
-    
-} else if (playerRockCard && computerLeafCard) {
+function selectedCards() {
 
-    infoParty.textContent = `Computer remporte la manche`
-    topScore.innerHTML = `+0`
 
-} else if (playerRockCard && computerCissorsCard) {
-
-    infoParty.textContent = `Vous remportez la manche`
-    topScore.innerHTML = `+1`
-
-    // playerLeafCard :
-} else if (playerLeafCard && computerLeafCard) {
-
-    infoParty.textContent = `Égalité`
-    topScore.innerHTML = `+0`
-
-    
-}else if (playerLeafCard && computerCissorsCard){
-    
-    infoParty.textContent = `Computer remporte la manche`
-    topScore.innerHTML = `+0`
-
-} else if (playerLeafCard && computerRockCard) {
-
-    infoParty.textContent = `Vous remportez la manche`
-    topScore.innerHTML = `+1`
-
-    // playerCissorsCard :
-}else if(playerCissorsCard && computerCissorsCard){
-
-    infoParty.textContent = `Égalité`
-    topScore.innerHTML = `+0`
-
-}else if(playerCissorsCard && computerRockCard){
-
-    infoParty.textContent = `Computer remporte la manche`
-    topScore.innerHTML = `+0`
-
-}else if(playerCissorsCard && computerLeafCard){
-
-    infoParty.textContent = `Vous remportez la manche`
-    topScore.innerHTML = `+1`
 }
