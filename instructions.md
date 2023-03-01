@@ -14,22 +14,17 @@ Instructions :
 
     Affichez le résultat du jeu dans la zone de texte HTML en utilisant la méthode innerHTML.
 
-    Réglement du jeux : 
 
-                <h2>Régles du jeux:</h2>
+<!-- Reste à faire : -->
 
-            <h3>Force de chaque forme au Pierre – Feuille – Ciseaux :</h3>
-            <ul>
-                <li>La pierre écrase les ciseaux et gagne.</li>
-                <li>La feuille enveloppe la pierre et gagne.</li>
-                <li>Les ciseaux découpent la feuille et gagnent.</li>
-            </ul>
+<!-- 01/03/23 -->
 
-            <p> A partir de là chaque forme en bat une autre et perd contre une autre. Voici les forces en général au
-             Shifumi.</p>
+> implémenter une boucle pour le nombre de manche voir au choix 3 | 5
 
-             <h3>Comment jouer au Shi Fu Mi :</h3>
+>implémanter une boucle pour le suivi du score
 
-             <p>Le jeu se joue généralement en duel même s’il est possible de s’affronter à plusieurs. <br> Pour commencer les joueurs comptent jusqu’à trois en mettant la main dans le dos. Une fois à trois les joueurs révèlent leur main (pierre, feuille ou ciseaux) en même temps. <br> La plus forte des formes l’emporte et le joueur marque le point gagnant. <br> Si les deux joueurs utilisent la même forme c’est un match nul. <br> A savoir que le jeu se déroule généralement en une manche gagnante. Mais pour plus de plaisir de jeu, il est bien de jouer au meilleur des trois manches (le premier a deux points remporte la partie) ou cinq manches (premier à trois points). 
-               <br> A vous de décider !</p>
-        </div>
+> ajouter un delay de 3 secondes entre 2 manches
+
+> ajouter un delay sur les logs de party
+
+> le css

@@ -1,11 +1,3 @@
-
-// varaibles:
-// info générales :
-
-const infoParty =  document.querySelector(".info-Party");
-const topScore = document.querySelector(".top-score");
-
-
 // Feature - Player tag :
 const inpPseudo = document.querySelector("input.pseudo");
 const playerTag = document.querySelector("p.player-Tag");
@@ -22,7 +14,7 @@ function checkPlayerTag() {
 
     if (inpPseudo.value.match(RegExpPlayerTag)) {
       
-      let pseudo =  inpPseudo.value;
+      const pseudo =  inpPseudo.value;
       
     // transform the first letter to UpperCase()
      return  playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
@@ -38,7 +30,7 @@ function checkPlayerTag() {
 
 // I - fonction startGame : 
 
-let timer = document.querySelector(".timer")
+const timer = document.querySelector(".timer")
 
 const btnStartingGame = document.querySelector('button.letPlay');
 
@@ -63,9 +55,11 @@ btnStartingGame.addEventListener("click", function startGame() {
 // playerChoice : 
 
 // player buttons :
-let playerRockCard = document.querySelector("img#rock-card_player");
-let playerLeafCard = document.querySelector("img#leaf-card_player");
-let playerCissorsCard = document.querySelector("img#scissors-card_player");
+const playerRockCard = document.querySelector("img#rock-card_player");
+const playerLeafCard = document.querySelector("img#leaf-card_player");
+const playerCissorsCard = document.querySelector("img#scissors-card_player");
+
+const infoPlayer = document.querySelector("p.info-Player")
 
 // function playerChoice :
 
@@ -74,7 +68,7 @@ let playerChoice;
 playerRockCard.addEventListener("click", () => {
 
     playerChoice = "pierre";
-    console.log(`Le joueur à joué la carte ${playerChoice}`);
+    infoPlayer.innerHTML = (`Le joueur à joué la carte ${playerChoice}`);
 
     playGame();
 });
@@ -82,7 +76,7 @@ playerRockCard.addEventListener("click", () => {
 playerLeafCard.addEventListener("click", ()=>{
 
     playerChoice = "feuille";
-    console.log(`Le joueur a joué la carte ${playerChoice}`);
+    infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
     playGame();
 })
@@ -90,7 +84,7 @@ playerLeafCard.addEventListener("click", ()=>{
 playerCissorsCard.addEventListener("click", () =>{
 
     playerChoice = "ciseaux";
-    console.log(`Le joueur a joué la carte ${playerChoice}`);
+    infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
     playGame();
 })
@@ -103,25 +97,48 @@ let computerRockCard = document.querySelector("img#rock-card_player");
 let computerLeafCard = document.querySelector("img#leaf-card_player");
 let computerCissorsCard = document.querySelector("img#scissors-card_player");
 
-// function random computerChoice :
+// function playGame() :
 
+// randomChoicesComputer :
 function playGame() {
     const computerChoices = ["pierre", "feuille", "ciseaux"];
     const computerChoice = computerChoices[Math.floor(Math.random()*3)];
 
+    // info text Player: 
+const infoParty =  document.querySelector(".info-Party");
+const topScore = document.querySelector(".top-score");
 
-    // debug: 
+    // info text Computer: 
+    const infoComputer = document.querySelector("p.info-Computer")
+    infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
 
-    console.log(`Computer a joué ${computerChoice}`);
+//    score:
+
+let score = []
+
+for (let i = 0; i < 3; i++) {
+    score.push(i);
+    
+}
+
+console.log(`contenu de ${score}`)
 
     switch (playerChoice) {
         case "pierre":
             if (computerChoice === "pierre") {
                 infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
+                score = + 0;
+                topScore.innerHTML = `${score}`
+
             }else if(computerChoice === "feuille"){
                 infoParty.innerHTML =  `Perdu, vous perdez la manche !`
+                score = + 0;
+                topScore.innerHTML = `${score}`
+
             }else if(computerChoice === "ciseaux"){
                 infoParty.innerHTML =  `Gagné, vous remportez la manche !`
+                score = + 1;
+                topScore.innerHTML = `${score}`
             }
             break;
 
@@ -143,8 +160,11 @@ function playGame() {
                     }else if(computerChoice === "ciseaux"){
                         infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
                     }
+
         default:
             break;
+
+
     }
     
 }
