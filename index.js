@@ -1,14 +1,46 @@
 
 // varaibles:
 // info générales :
+
 const infoParty =  document.querySelector(".info-Party");
 const topScore = document.querySelector(".top-score");
+
+
+// Feature - Player tag :
+const inpPseudo = document.querySelector("input.pseudo");
+const playerTag = document.querySelector("p.player-Tag");
+const btnPlayerTag = document.querySelector("button.btnPlayerTag")
+
+btnPlayerTag.addEventListener("click", () => {
+
+    checkPlayerTag()
+})
+
+function checkPlayerTag() {
+
+    RegExpPlayerTag = /[a-z 0-9]{2,8}/gi;
+
+    if (inpPseudo.value.match(RegExpPlayerTag)) {
+      
+      let pseudo =  inpPseudo.value;
+      
+    // transform the first letter to UpperCase()
+     return  playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
+        
+    }else if (inpPseudo.value !== (RegExpPlayerTag))
+    
+    playerTag.innerHTML = `La saisie est invalide, veuillez saisir au minimum 2 caractères alphanumériques.`
+}
+
+/*****/
+
+
 
 // I - fonction startGame : 
 
 let timer = document.querySelector(".timer")
 
-const btnStartingGame = document.querySelector('button[type = "submit"]');
+const btnStartingGame = document.querySelector('button.letPlay');
 
 btnStartingGame.addEventListener("click", function startGame() {
 
@@ -85,31 +117,31 @@ function playGame() {
     switch (playerChoice) {
         case "pierre":
             if (computerChoice === "pierre") {
-                console.log  `Égalité, personne ne remporte la manche !`
+                infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
             }else if(computerChoice === "feuille"){
-                console.log  `Perdu, vous perdez la manche !`
+                infoParty.innerHTML =  `Perdu, vous perdez la manche !`
             }else if(computerChoice === "ciseaux"){
-                console.log  `Gagné, vous remportez la manche !`
+                infoParty.innerHTML =  `Gagné, vous remportez la manche !`
             }
             break;
 
             case "feuille":
                 if(computerChoice === "pierre"){
-                    console.log  `Gagné, vous remportez la manche !`
+                    infoParty.innerHTML =  `Gagné, vous remportez la manche !`
                 }else if(computerChoice === "feuille"){
-                     console.log `Égalité, personne ne remporte la manche !`
+                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
                 }else if(computerChoice === "ciseaux"){
-                     console.log `Perdu, vous perdez la manche !`
+                    infoParty.innerHTML = `Perdu, vous perdez la manche !`
                 }
-                break;
 
+                break;
                 case "ciseaux":
                     if (computerChoice === "pierre") {
-                        console.log  `Perdu ! vous perdez la manche !`
+                        infoParty.innerHTML =  `Perdu ! vous perdez la manche !`
                     }else if(computerChoice === "feuille"){
-                        console.log  `Gagné, vous remportez la manche !`
+                        infoParty.innerHTML =  `Gagné, vous remportez la manche !`
                     }else if(computerChoice === "ciseaux"){
-                        console.log  `Égalité, personne ne remporte la manche !`
+                        infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
                     }
         default:
             break;
