@@ -1,4 +1,9 @@
 
+// varaibles:
+// info générales :
+const infoParty =  document.querySelector(".info-Party");
+const topScore = document.querySelector(".top-score");
+
 // I - fonction startGame : 
 
 let timer = document.querySelector(".timer")
@@ -23,37 +28,6 @@ btnStartingGame.addEventListener("click", function startGame() {
 
 // II - logique du jeux :
 
-// computer choice :
-
-// tableau des cartes SHI FU MI :
-const cardsTab = [
-    "rock-card",
-    "leaf-card",
-    "scissors-card",
-]
-
-// function random computerChoice :
-function computerChoice() {
-    let randomComputerChoice = Math.floor(Math.random() * (cardsTab.length) | 0)
-
-    let computerChoiceValue = cardsTab[randomComputerChoice]
-    console.log(`Le choix de l'ordinateur est ${computerChoiceValue}`)
-}
-
-computerChoice()
-
-
-// création de 2 variables pour stocker le choix joueur et pc :
-// let computerPlayedCard = `${computerChoiceValue}`;
-// let playerChoice = playerCard.selected;
-
-
-// computer buttons :
-let computerRockCard = document.querySelector("img#rock-card_player");
-let computerLeafCard = document.querySelector("img#leaf-card_player");
-let computerCissorsCard = document.querySelector("img#scissors-card_player");
-
-
 // playerChoice : 
 
 // player buttons :
@@ -61,48 +35,84 @@ let playerRockCard = document.querySelector("img#rock-card_player");
 let playerLeafCard = document.querySelector("img#leaf-card_player");
 let playerCissorsCard = document.querySelector("img#scissors-card_player");
 
-// selectedCards :
+// function playerChoice :
 
-playerRockCard.addEventListener("click", function selectedCard() {
-    
-    playerRockCard = cardsTab[0];
-    
-    console.log(`Valeur de la carte du joeur : ${playerRockCard}`);
+let playerChoice;
 
-    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[0]}`);
-    
-    console.log(`Le joueur a joué la ${cardsTab[0]}`);
-    
+playerRockCard.addEventListener("click", () => {
+
+    playerChoice = "pierre";
+    console.log(`Le joueur à joué la carte ${playerChoice}`);
+
+    playGame();
+});
+
+playerLeafCard.addEventListener("click", ()=>{
+
+    playerChoice = "feuille";
+    console.log(`Le joueur a joué la carte ${playerChoice}`);
+
+    playGame();
 })
 
-playerLeafCard.addEventListener("click", function selectedCard() {
-    
-    playerLeafCard = cardsTab[1];
-    
-    console.log(`Valeur de la carte du joeur : ${playerLeafCard}`);
-    
-    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[1]}`);
-    
-    console.log(`Le joueur a joué la ${cardsTab[1]}`);
-})
+playerCissorsCard.addEventListener("click", () =>{
 
-playerCissorsCard.addEventListener("click", function selectedCard() {
-    
-    playerCissorsCard = cardsTab[2]
-    
-    console.log(`Valeur de la carte du joeur : ${playerCissorsCard}`);
+    playerChoice = "ciseaux";
+    console.log(`Le joueur a joué la carte ${playerChoice}`);
 
-    infoParty.innerHTML = (`Le joueur a joué la ${cardsTab[2]}`)
-    
-    console.log(`Le joueur a joué la ${cardsTab[2]}`);
+    playGame();
 })
 
 
-// infos party: 
-const infoParty = document.querySelector("p.info-Party");
-const topScore = document.querySelector(".result")
+// computer choice :
 
-function selectedCards() {
-    
+// computer buttons :
+let computerRockCard = document.querySelector("img#rock-card_player");
+let computerLeafCard = document.querySelector("img#leaf-card_player");
+let computerCissorsCard = document.querySelector("img#scissors-card_player");
+
+// function random computerChoice :
+
+function playGame() {
+    const computerChoices = ["pierre", "feuille", "ciseaux"];
+    const computerChoice = computerChoices[Math.floor(Math.random()*3)];
+
+
+    // debug: 
+
+    console.log(`Computer a joué ${computerChoice}`);
+
+    switch (playerChoice) {
+        case "pierre":
+            if (computerChoice === "pierre") {
+                console.log  `Égalité, personne ne remporte la manche !`
+            }else if(computerChoice === "feuille"){
+                console.log  `Perdu, vous perdez la manche !`
+            }else if(computerChoice === "ciseaux"){
+                console.log  `Gagné, vous remportez la manche !`
+            }
+            break;
+
+            case "feuille":
+                if(computerChoice === "pierre"){
+                    console.log  `Gagné, vous remportez la manche !`
+                }else if(computerChoice === "feuille"){
+                     console.log `Égalité, personne ne remporte la manche !`
+                }else if(computerChoice === "ciseaux"){
+                     console.log `Perdu, vous perdez la manche !`
+                }
+                break;
+
+                case "ciseaux":
+                    if (computerChoice === "pierre") {
+                        console.log  `Perdu ! vous perdez la manche !`
+                    }else if(computerChoice === "feuille"){
+                        console.log  `Gagné, vous remportez la manche !`
+                    }else if(computerChoice === "ciseaux"){
+                        console.log  `Égalité, personne ne remporte la manche !`
+                    }
+        default:
+            break;
+    }
     
 }
