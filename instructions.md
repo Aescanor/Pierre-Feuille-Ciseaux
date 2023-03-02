@@ -19,9 +19,16 @@ Instructions :
 
 <!-- 01/03/23 -->
 
+
 > implémenter une boucle pour le nombre de manche voir au choix 3 | 5
 
 >implémanter une boucle pour le suivi du score
+ si 3 points joueur remporte la manche.
+
+ >erreurs commises : 
+        avoir déclarer la variable scorePlayer dans la fonction, de par cette erreur la fonction réinitialise le score à chaque appel.
+
+        seconde erreur j'ai assigné score = 0 en cas de manche perdue ><
 
 > ajouter un delay de 3 secondes entre 2 manches
 
