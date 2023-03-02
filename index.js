@@ -1,3 +1,4 @@
+// Variables genérales :
 // Feature - Player tag :
 const inpPseudo = document.querySelector("input.pseudo");
 const playerTag = document.querySelector("p.player-Tag");
@@ -5,7 +6,7 @@ const btnPlayerTag = document.querySelector("button.btnPlayerTag")
 
 // Features - Scores :
 // Feature - playerScore :
-let topPlayerScore = document.querySelector(".playerScore")
+let topPlayerScore = document.querySelector(".playerScore");
 // variable scorePlayer :
 let playerScore = 0;
 
@@ -13,6 +14,11 @@ let playerScore = 0;
 const topComputerScore = document.querySelector(".computerScore");
 // variable computerScore: 
 let computerScore = 0;
+
+// Feature - remainingParties :
+const remainingParties = document.querySelector(".remaining-parties");
+// variable remainingPartiesCounter :
+let partiesCounter = 5;
 
 
 /**************************************************************** */
@@ -40,7 +46,7 @@ function checkPlayerTag() {
 }
 
 /*****/
-// I - fonction startGame : 
+// I - Fonction startGame : 
 
 const timer = document.querySelector(".timer")
 
@@ -62,7 +68,7 @@ btnStartingGame.addEventListener("click", function startGame() {
     }, 1000)
 })
 
-// II - logique du jeux :
+// II - game logic :
 
 // playerChoice : 
 
@@ -82,6 +88,7 @@ playerRockCard.addEventListener("click", () => {
     playerChoice = "pierre";
     infoPlayer.innerHTML = (`Le joueur à joué la carte ${playerChoice}`);
 
+    remainingPartiesCounter()
     playGame();
 });
 
@@ -90,6 +97,7 @@ playerLeafCard.addEventListener("click", () => {
     playerChoice = "feuille";
     infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
+    remainingPartiesCounter()
     playGame();
 })
 
@@ -98,8 +106,20 @@ playerCissorsCard.addEventListener("click", () => {
     playerChoice = "ciseaux";
     infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
+    remainingPartiesCounter()
     playGame();
 })
+
+
+// // feature remainingPartiesCounter() :
+
+// function remainingPartiesCounter(){
+
+//     partiesCounter -=1;
+//     partiesCounter.innerHTML = `${partiesCounter}`
+
+//     console.log(`click`);
+// }
 
 
 // computer choice :
@@ -116,7 +136,7 @@ function playGame() {
     const computerChoices = ["pierre", "feuille", "ciseaux"];
     const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
 
-    // info text Player: 
+    // info text Party: 
     const infoParty = document.querySelector(".info-Party");
 
     // info text Computer: 
@@ -125,68 +145,90 @@ function playGame() {
 
 
     // Features incrementsScores :
-        // player :
+    // player :
     function incrementScorePlayer() {
-      playerScore += 1;
-      topPlayerScore.innerHTML = `${playerScore}`;
+        playerScore += 1;
+        topPlayerScore.innerHTML = `${playerScore}`;
     }
 
     // computer :
-    function incrementScoreComputer(){
-        computerScore +=1;
+    function incrementScoreComputer() {
+        computerScore += 1;
         topComputerScore.innerHTML = `${computerScore}`
     }
 
 
     switch (playerChoice) {
-      case "pierre":
-        if (computerChoice === "pierre") {
-          infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
+        case "pierre":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
 
-        } else if(computerChoice === "feuille") {
-          infoParty.innerHTML =  `Perdu, vous perdez la manche !`
-          incrementScoreComputer()
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                incrementScoreComputer()
 
-        } else if(computerChoice === "ciseaux") {
-          infoParty.innerHTML =  `Gagné, vous remportez la manche !`
-          incrementScorePlayer();
-        }
-        break;
-    
-      case "feuille":
-        if(computerChoice === "pierre") {
-          infoParty.innerHTML =  `Gagné, vous remportez la manche !`
-          incrementScorePlayer();
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                incrementScorePlayer();
+            }
+            break;
 
-        } else if(computerChoice === "feuille") {
-          infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+        case "feuille":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                incrementScorePlayer();
 
-        } else if(computerChoice === "ciseaux") {
-          infoParty.innerHTML = `Perdu, vous perdez la manche !`
-          incrementScoreComputer()
-        }
-        break;
-    
-      case "ciseaux":
-        if (computerChoice === "pierre") {
-          infoParty.innerHTML =  `Perdu ! vous perdez la manche !`
-          incrementScoreComputer()
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
 
-        } else if(computerChoice === "feuille") {
-          infoParty.innerHTML =  `Gagné, vous remportez la manche !`
-          incrementScorePlayer();
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                incrementScoreComputer()
+            }
+            break;
 
-        } else if(computerChoice === "ciseaux") {
-          infoParty.innerHTML =  `Égalité, personne ne remporte la manche !`
-        }
-        break;
-    
-      default:
-        break;
+        case "ciseaux":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Perdu ! vous perdez la manche !`
+                incrementScoreComputer()
+
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                incrementScorePlayer();
+
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+            }
+            break;
+
+        default:
+            break;
     }
-    
+
 }
 
 
 // TEST/
+
+const infoParty = document.querySelector(".info-Party");
+
+
+// feature remainingPartiesCounter() :
+
+// la variable stockera le gagnant 
+let winner;
+
+function remainingPartiesCounter(){
+
+    partiesCounter --;
+    remainingParties.innerHTML = `${partiesCounter}`
+
+    if(partiesCounter === 0){
+       
+        alert `Le jeux est terminé le gagnant est ${winner}`
+    }
+
+
+}
+
 

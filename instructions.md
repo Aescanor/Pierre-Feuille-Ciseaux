@@ -23,7 +23,7 @@ Instructions :
 > implémenter une boucle pour le nombre de manche voir au choix 3 | 5
 
 >implémanter une boucle pour le suivi du score
- si 3 points joueur remporte la manche.
+ si 3 points en 5 manche joueur/computer remporte la partie.
 
  >erreurs commises : 
         avoir déclarer la variable scorePlayer dans la fonction, de par cette erreur la fonction réinitialise le score à chaque appel.
@@ -31,6 +31,7 @@ Instructions :
         seconde erreur j'ai assigné score = 0 en cas de manche perdue ><
 
 > ajouter un delay de 3 secondes entre 2 manches
+
 
 > ajouter un delay sur les logs de party
 
