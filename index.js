@@ -1,4 +1,11 @@
 // Variables genérales :
+
+// info text Party: 
+const infoParty = document.querySelector(".info-Party");
+
+// info text Computer: 
+const infoComputer = document.querySelector("p.info-Computer")
+
 // Feature - Player tag :
 const inpPseudo = document.querySelector("input.pseudo");
 const playerTag = document.querySelector("p.player-Tag");
@@ -19,6 +26,18 @@ let computerScore = 0;
 const remainingParties = document.querySelector(".remaining-parties");
 // variable remainingPartiesCounter :
 let partiesCounter = 5;
+
+// player buttons :
+const playerRockCard = document.querySelector("img#rock-card_player");
+const playerLeafCard = document.querySelector("img#leaf-card_player");
+const playerCissorsCard = document.querySelector("img#scissors-card_player");
+
+const infoPlayer = document.querySelector("p.info-Player")
+
+// computer buttons :
+let computerRockCard = document.querySelector("img#rock-card_player");
+let computerLeafCard = document.querySelector("img#leaf-card_player");
+let computerCissorsCard = document.querySelector("img#scissors-card_player");
 
 
 /**************************************************************** */
@@ -45,7 +64,8 @@ function checkPlayerTag() {
         playerTag.innerHTML = `La saisie est invalide, veuillez saisir au minimum 2 caractères alphanumériques.`
 }
 
-/*****/
+/**************************************************************** */
+
 // I - Fonction startGame : 
 
 const timer = document.querySelector(".timer")
@@ -71,13 +91,6 @@ btnStartingGame.addEventListener("click", function startGame() {
 // II - game logic :
 
 // playerChoice : 
-
-// player buttons :
-const playerRockCard = document.querySelector("img#rock-card_player");
-const playerLeafCard = document.querySelector("img#leaf-card_player");
-const playerCissorsCard = document.querySelector("img#scissors-card_player");
-
-const infoPlayer = document.querySelector("p.info-Player")
 
 // function playerChoice :
 
@@ -111,50 +124,72 @@ playerCissorsCard.addEventListener("click", () => {
 })
 
 
-// // feature remainingPartiesCounter() :
+// Fonction controle des scores et parties restantes :
 
-// function remainingPartiesCounter(){
+// la variable stockera le gagnant 
+let winner;
 
-//     partiesCounter -=1;
-//     partiesCounter.innerHTML = `${partiesCounter}`
+// function winnerIs : 
+function winnerIs() {
 
-//     console.log(`click`);
-// }
+    if (playerScore === 3) {
+        winner = `${pseudo.value}`
+        infoParty.innerHTML = `Le gagnant est ${winner}`
+       if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
+            reload
+        }
+    } else if (computerScore === 3) {
+        winner = `Computer`
+        infoParty.innerHTML = `Le gagnant est ${winner}`
+    }else if(partiesCounter === 0 && playerScore > computerScore){
+        winner = `${pseudo.value}`
+        alert(`Le gangant est ${winner}`)
 
+    }else if(partiesCounter === 0 && playerScore < computerScore){
+        winner = `Computer`
+        alert(`Le gangant est ${winner}`)
+    }
 
-// computer choice :
+    remainingPartiesCounter()
 
-// computer buttons :
-let computerRockCard = document.querySelector("img#rock-card_player");
-let computerLeafCard = document.querySelector("img#leaf-card_player");
-let computerCissorsCard = document.querySelector("img#scissors-card_player");
+}
+
+// feature remainingPartiesCounter() :
+function remainingPartiesCounter() {
+
+    partiesCounter--;
+    remainingParties.innerHTML = `${partiesCounter}`
+
+}
+
 
 // function playGame() :
 
+// computer choice :
 // randomChoicesComputer :
 function playGame() {
     const computerChoices = ["pierre", "feuille", "ciseaux"];
     const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
 
-    // info text Party: 
-    const infoParty = document.querySelector(".info-Party");
-
     // info text Computer: 
-    const infoComputer = document.querySelector("p.info-Computer")
     infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
 
 
-    // Features incrementsScores :
+    // Functions incrementsScores :
     // player :
     function incrementScorePlayer() {
         playerScore += 1;
         topPlayerScore.innerHTML = `${playerScore}`;
+
+        winnerIs()
     }
 
     // computer :
     function incrementScoreComputer() {
         computerScore += 1;
         topComputerScore.innerHTML = `${computerScore}`
+
+        winnerIs()
     }
 
 
@@ -209,26 +244,5 @@ function playGame() {
 
 
 // TEST/
-
-const infoParty = document.querySelector(".info-Party");
-
-
-// feature remainingPartiesCounter() :
-
-// la variable stockera le gagnant 
-let winner;
-
-function remainingPartiesCounter(){
-
-    partiesCounter --;
-    remainingParties.innerHTML = `${partiesCounter}`
-
-    if(partiesCounter === 0){
-       
-        alert `Le jeux est terminé le gagnant est ${winner}`
-    }
-
-
-}
 
 
