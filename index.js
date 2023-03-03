@@ -129,15 +129,13 @@ playerCissorsCard.addEventListener("click", () => {
 // la variable stockera le gagnant 
 let winner;
 
-// function winnerIs() :
+// function winnerIs : 
 function winnerIs() {
 
     partiesCounter--;
     remainingParties.innerHTML = `${partiesCounter}`;
 
-// évaluate the scoring :
     if (partiesCounter == 0) {
-        
         if (`${playerScore}` > `${computerScore}`) {
             winner = `${pseudo.value}`
             infoParty.innerHTML = `${winner} remporte le jeux`
@@ -160,6 +158,13 @@ function winnerIs() {
         }
     }
 }
+
+// // // function winnerIs() :
+// function winnerIs() {
+
+//     partiesCounter--;
+//     remainingParties.innerHTML = `${partiesCounter}`;
+// }
 
 
 // function playGame() :

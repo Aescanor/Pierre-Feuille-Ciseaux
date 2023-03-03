@@ -43,3 +43,40 @@ solution faire de remainingPartiesCounter la fonction maitresse qui controle:
 
     
     </ul>
+
+    // Fonction controle des scores et parties restantes :
+
+// la variable stockera le gagnant 
+let winner;
+
+// function winnerIs() :
+function winnerIs() {
+
+    partiesCounter--;
+    remainingParties.innerHTML = `${partiesCounter}`;
+
+// évaluate the scoring :
+    if (partiesCounter == 0) {
+        
+        if (`${playerScore}` > `${computerScore}`) {
+            winner = `${pseudo.value}`
+            infoParty.innerHTML = `${winner} remporte le jeux`
+            alert(`${winner} remporte le jeux`)
+
+            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+                location.reload();
+            }
+    
+
+        }else if (computerScore > playerScore){
+            winner = `Computer`
+            infoParty.innerHTML = `${winner} remporte le jeux`
+            alert(`Computer remporte le jeux`)
+
+            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+                location.reload();
+            }
+    
+        }
+    }
+}
