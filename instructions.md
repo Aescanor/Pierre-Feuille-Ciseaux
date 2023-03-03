@@ -35,4 +35,4 @@ Instructions :
 
 > ajouter un delay sur les logs de party
 
-> le css
+> le css 

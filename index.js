@@ -136,30 +136,50 @@ function winnerIs() {
         winner = `${pseudo.value}`
         infoParty.innerHTML = `Le gagnant est ${winner}`
        if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-            reload
+            location.reload();
         }
     } else if (computerScore === 3) {
         winner = `Computer`
         infoParty.innerHTML = `Le gagnant est ${winner}`
+        if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
+            location.reload();
+        }
+
     }else if(partiesCounter === 0 && playerScore > computerScore){
         winner = `${pseudo.value}`
-        alert(`Le gangant est ${winner}`)
+        alert(`Le gagnant est ${winner}`)
+        if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
+            location.reload();
+        }
 
-    }else if(partiesCounter === 0 && playerScore < computerScore){
-        winner = `Computer`
-        alert(`Le gangant est ${winner}`)
+    // }else if(partiesCounter === 0 && playerScore < computerScore){
+    //     winner = `Computer`
+    //     alert(`Le gagnant est ${winner}`)
+    //     if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
+    //         reload
+    //     }
+
+    // }else if(partiesCounter === 0 && playerScore === computerScore){
+    //     winner = console.log (`Égalité, le jeux se termine sur un match nul`)
+    //     alert(`Le gagnant est ${winner}`)
+    //     if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
+    //         reload
+    //     }
     }
 
     remainingPartiesCounter()
 
 }
 
-// feature remainingPartiesCounter() :
+// function remainingPartiesCounter() :
 function remainingPartiesCounter() {
 
     partiesCounter--;
     remainingParties.innerHTML = `${partiesCounter}`
 
+    if(partiesCounter === 0){
+        alert(`Fin de la partie!`)
+    }
 }
 
 
