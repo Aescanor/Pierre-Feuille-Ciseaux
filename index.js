@@ -24,7 +24,7 @@ let computerScore = 0;
 
 // Feature - remainingParties :
 const remainingParties = document.querySelector(".remaining-parties");
-// variable remainingPartiesCounter :
+// variable winnerIs :
 let partiesCounter = 5;
 
 // player buttons :
@@ -101,7 +101,7 @@ playerRockCard.addEventListener("click", () => {
     playerChoice = "pierre";
     infoPlayer.innerHTML = (`Le joueur à joué la carte ${playerChoice}`);
 
-    remainingPartiesCounter()
+    winnerIs()
     playGame();
 });
 
@@ -110,7 +110,7 @@ playerLeafCard.addEventListener("click", () => {
     playerChoice = "feuille";
     infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
-    remainingPartiesCounter()
+    winnerIs()
     playGame();
 })
 
@@ -119,7 +119,7 @@ playerCissorsCard.addEventListener("click", () => {
     playerChoice = "ciseaux";
     infoPlayer.innerHTML = (`Le joueur a joué la carte ${playerChoice}`);
 
-    remainingPartiesCounter()
+    winnerIs()
     playGame();
 })
 
@@ -129,56 +129,35 @@ playerCissorsCard.addEventListener("click", () => {
 // la variable stockera le gagnant 
 let winner;
 
-// function winnerIs : 
+// function winnerIs() :
 function winnerIs() {
 
-    if (playerScore === 3) {
-        winner = `${pseudo.value}`
-        infoParty.innerHTML = `Le gagnant est ${winner}`
-       if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-            location.reload();
-        }
-    } else if (computerScore === 3) {
-        winner = `Computer`
-        infoParty.innerHTML = `Le gagnant est ${winner}`
-        if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-            location.reload();
-        }
-
-    }else if(partiesCounter === 0 && playerScore > computerScore){
-        winner = `${pseudo.value}`
-        alert(`Le gagnant est ${winner}`)
-        if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-            location.reload();
-        }
-
-    // }else if(partiesCounter === 0 && playerScore < computerScore){
-    //     winner = `Computer`
-    //     alert(`Le gagnant est ${winner}`)
-    //     if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-    //         reload
-    //     }
-
-    // }else if(partiesCounter === 0 && playerScore === computerScore){
-    //     winner = console.log (`Égalité, le jeux se termine sur un match nul`)
-    //     alert(`Le gagnant est ${winner}`)
-    //     if (confirm(`Voulez-vous faire une nouvelle partie ?`)){
-    //         reload
-    //     }
-    }
-
-    remainingPartiesCounter()
-
-}
-
-// function remainingPartiesCounter() :
-function remainingPartiesCounter() {
-
     partiesCounter--;
-    remainingParties.innerHTML = `${partiesCounter}`
+    remainingParties.innerHTML = `${partiesCounter}`;
 
-    if(partiesCounter === 0){
-        alert(`Fin de la partie!`)
+// évaluate the scoring :
+    if (partiesCounter == 0) {
+        
+        if (`${playerScore}` > `${computerScore}`) {
+            winner = `${pseudo.value}`
+            infoParty.innerHTML = `${winner} remporte le jeux`
+            alert(`${winner} remporte le jeux`)
+
+            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+                location.reload();
+            }
+    
+
+        }else if (computerScore > playerScore){
+            winner = `Computer`
+            infoParty.innerHTML = `${winner} remporte le jeux`
+            alert(`Computer remporte le jeux`)
+
+            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+                location.reload();
+            }
+    
+        }
     }
 }
 
