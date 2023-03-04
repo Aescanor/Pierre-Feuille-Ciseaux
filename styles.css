@@ -23,6 +23,11 @@ a{
     text-decoration: none;
 }
 
+a:hover{
+    color: green;
+    transition: all 0.1s ease-in-out;
+}
+
 
 html{
     font-size: 1rem;
@@ -57,6 +62,7 @@ body{
 
 h2{
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .trium-force, .explications{
@@ -157,6 +163,41 @@ p.player-Tag{
 
 .timer{
     font-size: 1.3rem;
+}
+
+.info-Party{
+    font-size: 2rem;
+    font-weight: 800;
+    font-style: italic;
+    color: antiquewhite;
+}
+
+.info-Player{
+    font-size: 2rem;
+    font-style: italic;
+    color: green;
+}
+
+.playerScore{
+    font-size: 2rem;
+    color: antiquewhite;
+}
+
+.info-Computer{
+    font-size: 2rem;
+    font-weight: 800;
+    font-style: italic;
+    color: orange;
+}
+
+.computerScore{
+    font-size: 2rem;
+    color: antiquewhite;
+}
+
+.remaining-parties{
+    font-size: 2rem;
+    color: antiquewhite;
 }
 
 /* .computer-side */

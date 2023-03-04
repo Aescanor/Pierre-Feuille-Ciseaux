@@ -35,48 +35,25 @@ Instructions :
 
 > le css
 
-solution faire de remainingPartiesCounter la fonction maitresse qui controle:
 
-    <ul> 
-        <li>le nbr de parties restantes</li>
-        <li>l'évaluation di gagnant</li>
+function winnerIS(){
 
-    
-    </ul>
-
-    // Fonction controle des scores et parties restantes :
-
-// la variable stockera le gagnant 
-let winner;
-
-// function winnerIs() :
-function winnerIs() {
-
-    partiesCounter--;
-    remainingParties.innerHTML = `${partiesCounter}`;
-
-// évaluate the scoring :
-    if (partiesCounter == 0) {
-        
-        if (`${playerScore}` > `${computerScore}`) {
-            winner = `${pseudo.value}`
-            infoParty.innerHTML = `${winner} remporte le jeux`
-            alert(`${winner} remporte le jeux`)
-
-            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
-                location.reload();
-            }
-    
-
-        }else if (computerScore > playerScore){
-            winner = `Computer`
-            infoParty.innerHTML = `${winner} remporte le jeux`
-            alert(`Computer remporte le jeux`)
-
-            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
-                location.reload();
-            }
-    
-        }
+    1ere condtion si nbr de tour restant === 0 && si scorePlayer > scoreComputer{
+       
+        alert`Player remporte le jeux`
     }
+
+    2nde conditions si nbr tour restant === 0  && si scorePlayer < scoreComputer{
+    
+    alert`Computer remporte le jeux`
+
+    }
+
+    3eme condition si nbr de tour restant === 0  && si scorePlayer === scoreComputer{
+        alert`Le jeux se termine sur un match nul !`
+
+    }
+
+
+
 }

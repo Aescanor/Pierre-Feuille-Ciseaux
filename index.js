@@ -136,108 +136,110 @@ function winnerIs() {
     partiesCounter--;
     remainingParties.innerHTML = `${partiesCounter}`;
 
-    if (partiesCounter == 0) {
-        if (`${playerScore}` > `${computerScore}`) {
-            winner = `${pseudo.value}`
-            infoParty.innerHTML = `${winner} remporte le jeux`
-            alert(`${winner} remporte le jeux`)
-
-            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
-                location.reload();
-            }
-    
-
-        }else if (computerScore > playerScore){
-            winner = `Computer`
-            infoParty.innerHTML = `${winner} remporte le jeux`
-            alert(`Computer remporte le jeux`)
-
-            if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
-                location.reload();
-            }
-    
+    if (partiesCounter === 0 && `${playerScore}` > `${computerScore}`) {
+        winner = `${pseudo.value}`
+        infoParty.innerHTML = `${winner} remporte le jeux`
+        alert(`${winner} remporte le jeux`)
+        if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+            location.reload();
         }
+
+    } else if (partiesCounter === 0 && `${playerScore}` < `${computerScore}`) {
+        winner = `Computer`
+        infoParty.innerHTML = `${winner} remporte le jeux`
+        alert(`${winner} remporte le jeux`)
+        if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+            location.reload();
+        }
+        
+    } else if (partiesCounter === 0 && `${playerScore}` === `${computerScore}`) {
+        infoParty.innerHTML = `Le jeux se termine sur un match nul !`
+        alert(`Le jeux se termine sur un match nul !`)
+        if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
+            location.reload();
+        }
+
     }
 }
 
-// function playGame() :
+    // function playGame() :
 
-// computer choice :
-// randomChoicesComputer :
-function playGame() {
-    const computerChoices = ["pierre", "feuille", "ciseaux"];
-    const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
+    // computer choice :
+    // randomChoicesComputer :
+    function playGame() {
+        const computerChoices = ["pierre", "feuille", "ciseaux"];
+        const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
 
-    // info text Computer: 
-    infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
+        // info text Computer: 
+        infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
 
 
-    // Functions incrementsScores :
-    // player :
-    function incrementScorePlayer() {
-        playerScore += 1;
-        topPlayerScore.innerHTML = `${playerScore}`;
+        // Functions incrementsScores :
+        // player :
+        function incrementScorePlayer() {
+            playerScore += 1;
+            topPlayerScore.innerHTML = `${playerScore}`;
 
-        winnerIs()
+            winnerIs()
+        }
+
+        // computer :
+        function incrementScoreComputer() {
+            computerScore += 1;
+            topComputerScore.innerHTML = `${computerScore}`
+
+            winnerIs()
+        }
+
+
+        switch (playerChoice) {
+            case "pierre":
+                if (computerChoice === "pierre") {
+                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+
+                } else if (computerChoice === "feuille") {
+                    infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                    incrementScoreComputer()
+
+                } else if (computerChoice === "ciseaux") {
+                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    incrementScorePlayer();
+                }
+                break;
+
+            case "feuille":
+                if (computerChoice === "pierre") {
+                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    incrementScorePlayer();
+
+                } else if (computerChoice === "feuille") {
+                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+
+                } else if (computerChoice === "ciseaux") {
+                    infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                    incrementScoreComputer()
+                }
+                break;
+
+            case "ciseaux":
+                if (computerChoice === "pierre") {
+                    infoParty.innerHTML = `Perdu ! vous perdez la manche !`
+                    incrementScoreComputer()
+
+                } else if (computerChoice === "feuille") {
+                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    incrementScorePlayer();
+
+                } else if (computerChoice === "ciseaux") {
+                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                }
+                break;
+
+            default:
+                break;
+        }
+
     }
-
-    // computer :
-    function incrementScoreComputer() {
-        computerScore += 1;
-        topComputerScore.innerHTML = `${computerScore}`
-
-        winnerIs()
-    }
-
-
-    switch (playerChoice) {
-        case "pierre":
-            if (computerChoice === "pierre") {
-                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-
-            } else if (computerChoice === "feuille") {
-                infoParty.innerHTML = `Perdu, vous perdez la manche !`
-                incrementScoreComputer()
-
-            } else if (computerChoice === "ciseaux") {
-                infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                incrementScorePlayer();
-            }
-            break;
-
-        case "feuille":
-            if (computerChoice === "pierre") {
-                infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                incrementScorePlayer();
-
-            } else if (computerChoice === "feuille") {
-                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-
-            } else if (computerChoice === "ciseaux") {
-                infoParty.innerHTML = `Perdu, vous perdez la manche !`
-                incrementScoreComputer()
-            }
-            break;
-
-        case "ciseaux":
-            if (computerChoice === "pierre") {
-                infoParty.innerHTML = `Perdu ! vous perdez la manche !`
-                incrementScoreComputer()
-
-            } else if (computerChoice === "feuille") {
-                infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                incrementScorePlayer();
-
-            } else if (computerChoice === "ciseaux") {
-                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-            }
-            break;
-
-        default:
-            break;
-    }
-
-}
 
 
 // TEST/
