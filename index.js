@@ -67,7 +67,7 @@ function checkPlayerTag() {
 
 /**************************************************************** */
 
-// I - Fonction startGame : 
+// I - Function startGame : 
 
 const timer = document.querySelector(".timer")
 
@@ -151,7 +151,7 @@ function winnerIs() {
         if (confirm(`Voulez-vous faire une nouvelle partie ?`)) {
             location.reload();
         }
-        
+
     } else if (partiesCounter === 0 && `${playerScore}` === `${computerScore}`) {
         infoParty.innerHTML = `Le jeux se termine sur un match nul !`
         alert(`Le jeux se termine sur un match nul !`)
