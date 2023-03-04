@@ -1,4 +1,12 @@
 
+/* preset :  */
+:root{
+    --mainColorTheme: black;
+    --secondColorTheme: white;
+    --tiersColorTheme: grey;
+    --linearGradientTheme : linear-gradient: 45deg(var(--mainColorTheme), var(--secondColorTheme));
+}
+
 /* reset :  */
 *, ::before, ::after{
     margin: 0;
@@ -16,7 +24,6 @@ a{
 }
 
 
-/* preset :  */
 html{
     font-size: 1rem;
     font-family: 'Times New Roman', Times, serif;
@@ -36,10 +43,13 @@ body{
 .game_rules{
     width: 100%;
     margin: auto;
-    background: orange;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 1.2rem;
 }
 
 .title{
+    width: 100vw;
     font-size: 3rem;
     text-align: center;
     font-weight: 800;
@@ -49,57 +59,178 @@ h2{
     text-align: center;
 }
 
+.trium-force, .explications{
+    width: 50%;
+    padding: 5px;
+}
 
+/* .block_party */
 .block_party{
     width: 100%;
     min-height: 100%;
-    height: 700px;
-    margin: auto;
+    height: 750px;
+    margin:10px auto;
+    border: 1px solid var(--tiersColorTheme);
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    background: pink;
 }
 
-.player-side, .dashboard, .computer-side{
+/* .player-side */
+.player-side{
+    width: 33%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.player-side>h2{
+    width: 100%;
+}
+
+
+/* .dashboard */
+.dashboard{
+    width: 33%;
+    display: flex;
+    background: cornflowerblue;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+label{
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 800;
+}
+
+.blockPseudo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+}
+
+
+input.pseudo{
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+input.pseudo::placeholder{
+    text-align: center;
+}
+
+.block_player-tag{
+    width: 100%;
+    text-align: center;
+}
+
+button.btnPlayerTag{
+    border: none;
+    background: none;
+    width: 125px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+button.btnPlayerTag:hover{
+    transform: scale(1.5);
+    transition: all 2ms ease-in-out;
+}
+
+p.player-Tag{
+    font-size: 2rem;
+    font-weight: 800;
+
+}
+
+.timer{
+    font-size: 1.3rem;
+}
+
+/* .computer-side */
+.computer-side{
+    width: 33%;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
 }
 
-.player-side{
-    width: 33%;
-    background: green;
-}
-
-.dashboard{
-    width: 33%;
-    background: yellow;
-}
-
-.computer-side{
-    width: 33%;
-    background: orangered;
-}
-
 .rock-card, .leaf-card, .scissors-card{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
 }
 
+#rock-card_player:hover, #leaf-card_player:hover, #scissors-card_player:hover{
+    border: 1px solid black;
+    border-radius: 50%;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.5);
+    transition: all 2s ease-in-out;
+}
+
+.scissors-card{
+    margin-top: 50px;
+}
 
 .timer{
     font-weight: bolder;
 }
 
+button.letPlay{
+    border: none;
+    background: none;
+    width: 125px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+button.letPlay:hover{
+    transform: scale(1.5);
+    transition: all 2ms ease-in-out;
+}
 
 
+#rock-card_computer:hover, #leaf-card_computer:hover, #scissors-card_computer:hover{
+    border: 1px solid black;
+    border-radius: 50%;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.5);
+    transition: all 2s ease-in-out;
+}
+
+
+/* footer  */
 footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100vw;
-    min-height: 100%;
-    height: 150px;
-    background: #333;
+    /* min-height: 100%; */
+    height: 100px;
+    background: black;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;

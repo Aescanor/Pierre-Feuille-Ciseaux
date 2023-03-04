@@ -13,30 +13,37 @@
 
     <div class="game_rules">
         <div class="title">Pierre - Feuille - Ciseaux</div>
-        <h2>Régles du jeux:</h2>
 
-        <h3>Force de chaque forme au Pierre – Feuille – Ciseaux :</h3>
+        <div class="trium-force">
+            <h2>Régles du jeux:</h2>
+            <h3>Force de chaque forme au Pierre – Feuille – Ciseaux :</h3>
 
-        <ul classe="trium">
-            <li>La pierre écrase les ciseaux et gagne.</li>
-            <li>La feuille enveloppe la pierre et gagne.</li>
-            <li>Les ciseaux découpent la feuille et gagnent.</li>
-        </ul>
+            <ul classe="trium">
+                <li>La pierre écrase les ciseaux et gagne.</li>
+                <li>La feuille enveloppe la pierre et gagne.</li>
+                <li>Les ciseaux découpent la feuille et gagnent.</li>
+            </ul>
+            <p> A partir de là chaque forme en bat une autre et perd contre une autre. Voici les forces en général au
+                Shifumi.</p>
+        </div>
 
-        <p> A partir de là chaque forme en bat une autre et perd contre une autre. Voici les forces en général au
-            Shifumi.</p>
-
-        <h3>Comment jouer au Shi Fu Mi :</h3>
-
-        <p>Le jeu se joue généralement en duel même s’il est possible de s’affronter à plusieurs. <br> Pour commencer
-            les joueurs comptent jusqu’à trois en mettant la main dans le dos. Une fois à trois les joueurs révèlent
-            leur main (pierre, feuille ou ciseaux) en même temps. <br> La plus forte des formes l’emporte et le joueur
-            marque le point gagnant. <br> Si les deux joueurs utilisent la même forme c’est un match nul. <br> A savoir
-            que le jeu se déroule généralement en une manche gagnante. Mais pour plus de plaisir de jeu, il est bien de
-            jouer au meilleur des trois manches (le premier a deux points remporte la partie) ou cinq manches (premier à
-            trois points).
-            <br> A vous de décider !
-        </p>
+        <div class="explications">
+            <h2>Comment jouer au Pierre Feuille Ciseaux :</h2>
+            <p>Le jeu se joue généralement en duel même s’il est possible de s’affronter à plusieurs. <br> Pour
+                commencer
+                les joueurs comptent jusqu’à trois en mettant la main dans le dos. Une fois à trois les joueurs révèlent
+                leur main (pierre, feuille ou ciseaux) en même temps. <br> La plus forte des formes l’emporte et le
+                joueur
+                marque le point gagnant. <br> Si les deux joueurs utilisent la même forme c’est un match nul. <br> A
+                savoir
+                que le jeu se déroule généralement en une manche gagnante. Mais pour plus de plaisir de jeu, il est bien
+                de
+                jouer au meilleur des trois manches (le premier a deux points remporte la partie) ou cinq manches
+                (premier à
+                trois points).
+                <br> A vous de décider !
+            </p>
+        </div>
     </div>
 
     <div class="block_party">
@@ -49,15 +56,20 @@
                 class="scissors-card">
         </div>
 
-        <div class="dashBoard">
+        <div class="dashboard">
 
-            <label for="pseudo">Votre pseudo</label>
-            <input type="text" id="pseudo" class="pseudo" placeholder="votre pseudo" autocomplete="off">
-            <button type="submit" class="btnPlayerTag">Valider</button>
-            <p class="player-Tag">Bienvenue player</p>
+            <label for="pseudo">Votre pseudo :</label>
+            <div class="blockPseudo">
+                <input type="text" id="pseudo" class="pseudo" placeholder="votre pseudo" autocomplete="off">
+                <button type="submit" class="btnPlayerTag"alt="bouton valider pseudo" title="valider">✅</button>
+            </div>
+
+            <div class="block_player-tag">
+                <p class="player-Tag">Bienvenue player</p>
+            </div>
 
             <p class="timer"></p>
-            <button type="submit" class="letPlay">Let's play</button>
+            <button type="submit" class="letPlay" alt="bouton lancer timer" title="Let's play">🕹️</button>
             <p class="info-Party"></p>
             <p class="info-Player"></p>
             <p>Votre score est de : <span class="playerScore"></span></p>
@@ -71,9 +83,9 @@
         <div class="computer-side">
 
             <h2>Computer</h2>
-            <img src="assets/images/stone.png" alt="pierre" title="pierre" id="rock-card_player" class="rock-card">
-            <img src="assets/images/leaf.png" alt="feuille" title="feuille" id="leaf-card_player" class="leaf-card">
-            <img src="assets/images/scissors.png" alt="ciseaux" title="ciseaux" id="scissors-card_player"
+            <img src="assets/images/stone.png" alt="pierre" title="pierre" id="rock-card_computer" class="rock-card">
+            <img src="assets/images/leaf.png" alt="feuille" title="feuille" id="leaf-card_computer" class="leaf-card">
+            <img src="assets/images/scissors.png" alt="ciseaux" title="ciseaux" id="scissors-card_computer"
                 class="scissors-card">
 
 
@@ -97,9 +109,9 @@
         </ul>
 
         <ul class="contact">
-            <li>mail</li>
-            <li>tel</li>
-            <li>linkedin</li>
+            <li><a href="#">mail</a></li>
+            <li><a href="#">autres</a></li>
+            <li><a href="#">autres</a></li>
 
         </ul>
 

@@ -58,6 +58,7 @@ function checkPlayerTag() {
 
         // transform the first letter to UpperCase()
         return playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
+        return playerSideTag.innerHTML = `${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`;
 
     } else if (inpPseudo.value !== (RegExpPlayerTag))
 
@@ -158,14 +159,6 @@ function winnerIs() {
         }
     }
 }
-
-// // // function winnerIs() :
-// function winnerIs() {
-
-//     partiesCounter--;
-//     remainingParties.innerHTML = `${partiesCounter}`;
-// }
-
 
 // function playGame() :
 
