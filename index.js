@@ -24,6 +24,7 @@ let computerScore = 0;
 
 // Feature - remainingParties :
 const remainingParties = document.querySelector(".remaining-parties");
+
 // variable winnerIs :
 let partiesCounter = 5;
 
@@ -35,9 +36,9 @@ const playerCissorsCard = document.querySelector("img#scissors-card_player");
 const infoPlayer = document.querySelector("p.info-Player")
 
 // computer buttons :
-let computerRockCard = document.querySelector("img#rock-card_player");
-let computerLeafCard = document.querySelector("img#leaf-card_player");
-let computerCissorsCard = document.querySelector("img#scissors-card_player");
+let computerRockCard = document.querySelector("img#rock-card_computer");
+let computerLeafCard = document.querySelector("img#leaf-card_computer");
+let computerCissorsCard = document.querySelector("img#scissors-card_computer");
 
 
 /**************************************************************** */
@@ -58,7 +59,7 @@ function checkPlayerTag() {
 
         // transform the first letter to UpperCase()
         return playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
-        return playerSideTag.innerHTML = `${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`;
+        // return playerSideTag.innerHTML = `${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`;
 
     } else if (inpPseudo.value !== (RegExpPlayerTag))
 
@@ -196,13 +197,17 @@ function winnerIs() {
             case "pierre":
                 if (computerChoice === "pierre") {
                     infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                    selectedComputerCards()
+
 
                 } else if (computerChoice === "feuille") {
                     infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                    selectedComputerCards()
                     incrementScoreComputer()
 
                 } else if (computerChoice === "ciseaux") {
                     infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    selectedComputerCards()
                     incrementScorePlayer();
                 }
                 break;
@@ -210,13 +215,16 @@ function winnerIs() {
             case "feuille":
                 if (computerChoice === "pierre") {
                     infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    selectedComputerCards()
                     incrementScorePlayer();
 
                 } else if (computerChoice === "feuille") {
                     infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                    selectedComputerCards()
 
                 } else if (computerChoice === "ciseaux") {
                     infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                    selectedComputerCards()
                     incrementScoreComputer()
                 }
                 break;
@@ -224,14 +232,17 @@ function winnerIs() {
             case "ciseaux":
                 if (computerChoice === "pierre") {
                     infoParty.innerHTML = `Perdu ! vous perdez la manche !`
+                    selectedComputerCards()
                     incrementScoreComputer()
 
                 } else if (computerChoice === "feuille") {
                     infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                    selectedComputerCards()
                     incrementScorePlayer();
 
                 } else if (computerChoice === "ciseaux") {
                     infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                    selectedComputerCards()
                 }
                 break;
 
@@ -239,9 +250,26 @@ function winnerIs() {
                 break;
         }
 
+        
+        
+        function selectedComputerCards(){
+            if(computerChoice === "pierre"){
+                computerLeafCard.classList.remove("active")
+                computerCissorsCard.classList.remove("active")
+                computerRockCard.classList.add("active")
+                
+            }else if(computerChoice === "feuille"){
+                computerRockCard.classList.remove("active")
+                computerCissorsCard.classList.remove("active")
+                computerLeafCard.classList.add("active")
+                
+            }else if(computerChoice === "ciseaux"){
+                computerRockCard.classList.remove("active")
+                computerLeafCard.classList.remove("active")
+                computerCissorsCard.classList.add("active")
+
+            }
+        }
     }
-
-
 // TEST/
-
 
