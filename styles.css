@@ -4,7 +4,7 @@
     --mainColorTheme: black;
     --secondColorTheme: white;
     --tiersColorTheme: grey;
-    --linearGradientTheme : linear-gradient: 45deg(var(--mainColorTheme), var(--secondColorTheme));
+    --linearGradientTheme : linear-gradient( var(--mainColorTheme), var(--tiersColorTheme));
 }
 
 /* reset :  */
@@ -21,11 +21,11 @@ li{
 
 a{
     text-decoration: none;
+    color: antiquewhite;
 }
 
 a:hover{
     color: green;
-    transition: all 0.1s ease-in-out;
 }
 
 
@@ -47,6 +47,7 @@ body{
 
 .game_rules{
     width: 100%;
+    height: 20vh;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
@@ -74,8 +75,8 @@ h2{
 .block_party{
     width: 100%;
     min-height: 100%;
-    height: 750px;
-    margin:10px auto;
+    height: 60vh;
+    margin: 60px auto;
     border: 1px solid var(--tiersColorTheme);
     display: flex;
     flex-flow: row;
@@ -102,7 +103,6 @@ h2{
     width: 33%;
     display: flex;
     background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
     flex-flow: column wrap;
     justify-content: space-around;
     align-items: center;
@@ -160,7 +160,6 @@ button.btnPlayerTag:hover{
 p.player-Tag{
     font-size: 2rem;
     font-weight: 800;
-
 }
 
 .timer{
@@ -225,7 +224,7 @@ p.player-Tag{
     justify-content: center;
     align-items: center;
     transform: scale(1.5);
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .scissors-card{
@@ -253,7 +252,7 @@ button.letPlay:hover{
 }
 
 
-.active{
+.active-card{
     border: 1px solid black;
     border-radius: 50%;
     background: orange;
@@ -261,7 +260,7 @@ button.letPlay:hover{
     justify-content: center;
     align-items: center;
     transform: scale(1.5);
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 
@@ -271,8 +270,11 @@ footer{
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 100px;
-    background: black;
+    height: 10vh;
+    margin-top: 15px;
+    background: var(--linearGradientTheme);
+    border: 1px solid grey;
+    border-radius: 5px 5px 0 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -291,5 +293,14 @@ footer{
     width: 100vw;
     color: antiquewhite;
     text-align: center;
+}
+
+footer li{
+    font-size: 1.1rem;
+}
+
+footer li:hover{
+    transform: scale(1.1);
+    transition: all 1s ease-in-out;
 }
 

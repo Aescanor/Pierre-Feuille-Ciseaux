@@ -1,7 +1,8 @@
-// Variables genérales :
-
 // info text Party: 
 const infoParty = document.querySelector(".info-Party");
+
+// info text Player: 
+const infoPlayer = document.querySelector("p.info-Player")
 
 // info text Computer: 
 const infoComputer = document.querySelector("p.info-Computer")
@@ -10,6 +11,9 @@ const infoComputer = document.querySelector("p.info-Computer")
 const inpPseudo = document.querySelector("input.pseudo");
 const playerTag = document.querySelector("p.player-Tag");
 const btnPlayerTag = document.querySelector("button.btnPlayerTag")
+
+const playerSideTag = document.querySelector(".playerSideTag")
+
 
 // Features - Scores :
 // Feature - playerScore :
@@ -33,7 +37,6 @@ const playerRockCard = document.querySelector("img#rock-card_player");
 const playerLeafCard = document.querySelector("img#leaf-card_player");
 const playerCissorsCard = document.querySelector("img#scissors-card_player");
 
-const infoPlayer = document.querySelector("p.info-Player")
 
 // computer buttons :
 let computerRockCard = document.querySelector("img#rock-card_computer");
@@ -41,9 +44,11 @@ let computerLeafCard = document.querySelector("img#leaf-card_computer");
 let computerCissorsCard = document.querySelector("img#scissors-card_computer");
 
 
-/**************************************************************** */
+/***************************************************** */
+/****************** FUNCTION PLAYERTAG *****************/
+/***************************************************** */
 
-// I - Feature - PlayerTag :
+//Feature - PlayerTag :
 btnPlayerTag.addEventListener("click", () => {
 
     checkPlayerTag()
@@ -57,18 +62,20 @@ function checkPlayerTag() {
 
         const pseudo = inpPseudo.value;
 
-        // transform the first letter to UpperCase()
+        playerSideTag.innerHTML = `${pseudo}`
+        
         return playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
-        // return playerSideTag.innerHTML = `${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`;
 
-    } else if (inpPseudo.value !== (RegExpPlayerTag))
+    } else if (inpPseudo.value !== (RegExpPlayerTag)) {
 
         playerTag.innerHTML = `La saisie est invalide, veuillez saisir au minimum 2 caractères alphanumériques.`
+
+    } 
 }
 
-/**************************************************************** */
-
-// I - Function startGame : 
+/***************************************************** */
+/****************** FUNCTION STARTGAME *****************/
+/***************************************************** */
 
 const timer = document.querySelector(".timer")
 
@@ -85,14 +92,16 @@ btnStartingGame.addEventListener("click", function startGame() {
         }
         else {
             clearInterval(startGame)
-            timer.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH :)"`
+            timer.innerHTML = `C'est l'heure du duel "référence à Yu Gi OH 🤓"`
         }
     }, 1000)
+
+    btnStartingGame.style.display = "none"
 })
 
-// II - game logic :
-
-// playerChoice : 
+/***************************************************** */
+/******************** GAME LOGIC ***********************/
+/***************************************************** */
 
 // function playerChoice :
 
@@ -125,10 +134,10 @@ playerCissorsCard.addEventListener("click", () => {
     playGame();
 })
 
+/***************************************************** */
+/****************** FUNCTIONS WINNERIS *****************/
+/***************************************************** */
 
-// Fonction controle des scores et parties restantes :
-
-// la variable stockera le gagnant 
 let winner;
 
 // function winnerIs : 
@@ -162,114 +171,112 @@ function winnerIs() {
 
     }
 }
+/***************************************************** */
+/****************** FUNCTION PLAYGAME *****************/
+/***************************************************** */
 
-    // function playGame() :
+// computer choice :
+function playGame() {
+    const computerChoices = ["pierre", "feuille", "ciseaux"];
+    const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
 
-    // computer choice :
-    // randomChoicesComputer :
-    function playGame() {
-        const computerChoices = ["pierre", "feuille", "ciseaux"];
-        const computerChoice = computerChoices[Math.floor(Math.random() * 3)];
-
-        // info text Computer: 
-        infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
-
-
-        // Functions incrementsScores :
-        // player :
-        function incrementScorePlayer() {
-            playerScore += 1;
-            topPlayerScore.innerHTML = `${playerScore}`;
-
-            winnerIs()
-        }
-
-        // computer :
-        function incrementScoreComputer() {
-            computerScore += 1;
-            topComputerScore.innerHTML = `${computerScore}`
-
-            winnerIs()
-        }
+    // info text Computer: 
+    infoComputer.innerHTML = (`Computer a joué ${computerChoice}`);
 
 
-        switch (playerChoice) {
-            case "pierre":
-                if (computerChoice === "pierre") {
-                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-                    selectedComputerCards()
+    // Functions incrementsScores :
+    // player :
+    function incrementScorePlayer() {
+        playerScore += 1;
+        topPlayerScore.innerHTML = `${playerScore}`;
+
+    }
+
+    // computer :
+    function incrementScoreComputer() {
+        computerScore += 1;
+        topComputerScore.innerHTML = `${computerScore}`
+
+    }
 
 
-                } else if (computerChoice === "feuille") {
-                    infoParty.innerHTML = `Perdu, vous perdez la manche !`
-                    selectedComputerCards()
-                    incrementScoreComputer()
+    switch (playerChoice) {
+        case "pierre":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                selectedComputerCards()
 
-                } else if (computerChoice === "ciseaux") {
-                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                    selectedComputerCards()
-                    incrementScorePlayer();
-                }
-                break;
 
-            case "feuille":
-                if (computerChoice === "pierre") {
-                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                    selectedComputerCards()
-                    incrementScorePlayer();
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                selectedComputerCards()
+                incrementScoreComputer()
 
-                } else if (computerChoice === "feuille") {
-                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-                    selectedComputerCards()
-
-                } else if (computerChoice === "ciseaux") {
-                    infoParty.innerHTML = `Perdu, vous perdez la manche !`
-                    selectedComputerCards()
-                    incrementScoreComputer()
-                }
-                break;
-
-            case "ciseaux":
-                if (computerChoice === "pierre") {
-                    infoParty.innerHTML = `Perdu ! vous perdez la manche !`
-                    selectedComputerCards()
-                    incrementScoreComputer()
-
-                } else if (computerChoice === "feuille") {
-                    infoParty.innerHTML = `Gagné, vous remportez la manche !`
-                    selectedComputerCards()
-                    incrementScorePlayer();
-
-                } else if (computerChoice === "ciseaux") {
-                    infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
-                    selectedComputerCards()
-                }
-                break;
-
-            default:
-                break;
-        }
-
-        
-        
-        function selectedComputerCards(){
-            if(computerChoice === "pierre"){
-                computerLeafCard.classList.remove("active")
-                computerCissorsCard.classList.remove("active")
-                computerRockCard.classList.add("active")
-                
-            }else if(computerChoice === "feuille"){
-                computerRockCard.classList.remove("active")
-                computerCissorsCard.classList.remove("active")
-                computerLeafCard.classList.add("active")
-                
-            }else if(computerChoice === "ciseaux"){
-                computerRockCard.classList.remove("active")
-                computerLeafCard.classList.remove("active")
-                computerCissorsCard.classList.add("active")
-
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                selectedComputerCards()
+                incrementScorePlayer();
             }
+            break;
+
+        case "feuille":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                selectedComputerCards()
+                incrementScorePlayer();
+
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                selectedComputerCards()
+
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Perdu, vous perdez la manche !`
+                selectedComputerCards()
+                incrementScoreComputer()
+            }
+            break;
+
+        case "ciseaux":
+            if (computerChoice === "pierre") {
+                infoParty.innerHTML = `Perdu ! vous perdez la manche !`
+                selectedComputerCards()
+                incrementScoreComputer()
+
+            } else if (computerChoice === "feuille") {
+                infoParty.innerHTML = `Gagné, vous remportez la manche !`
+                selectedComputerCards()
+                incrementScorePlayer();
+
+            } else if (computerChoice === "ciseaux") {
+                infoParty.innerHTML = `Égalité, personne ne remporte la manche !`
+                selectedComputerCards()
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    /**************************************************************** */
+
+    // function selectedComputerCards :
+    function selectedComputerCards() {
+        if (computerChoice === "pierre") {
+            computerLeafCard.classList.remove("active-card")
+            computerCissorsCard.classList.remove("active-card")
+            computerRockCard.classList.add("active-card")
+
+        } else if (computerChoice === "feuille") {
+            computerRockCard.classList.remove("active-card")
+            computerCissorsCard.classList.remove("active-card")
+            computerLeafCard.classList.add("active-card")
+
+        } else if (computerChoice === "ciseaux") {
+            computerRockCard.classList.remove("active-card")
+            computerLeafCard.classList.remove("active-card")
+            computerCissorsCard.classList.add("active-card")
+
         }
     }
-// TEST/
+}
 
